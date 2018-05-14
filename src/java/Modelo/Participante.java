@@ -1,10 +1,11 @@
 package Modelo;
 
 public class Participante {
-    String nome, codigo, email, senha;
+    String nome, email, senha;
     Participante amigo;
+    Integer codigo;
 
-    public Participante(String nome, String codigo, String email, String senha) {
+    public Participante(String nome, Integer codigo, String email, String senha) {
         this.nome = nome;
         this.codigo = codigo;
         this.email = email;
@@ -17,14 +18,6 @@ public class Participante {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public String getEmail() {
@@ -42,6 +35,16 @@ public class Participante {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
+
+    public Participante getAmigo() {
+        return amigo;
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setAmigo(Participante amigo) {
+        this.amigo = amigo;
+    }
 }
