@@ -1,6 +1,8 @@
 package Modelo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 
 public class Evento {
@@ -14,6 +16,13 @@ public class Evento {
         this.codigo = codigo;
         this.data = data;
         this.sorteio = sorteio;
+    }
+    
+     public Evento(String titulo, Integer codigo, String data, String sorteio) {
+        this.titulo = titulo;
+        this.codigo = codigo;
+        this.data = LocalDate.parse(data, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        this.sorteio = LocalDate.parse(sorteio, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
     }
 
     public String getTitulo() {
@@ -32,16 +41,16 @@ public class Evento {
         this.codigo = codigo;
     }
 
-    public LocalDate getData() {
-        return data;
+    public String getData() {
+        return data.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
     }
 
     public void setData(LocalDate data) {
         this.data = data;
     }
 
-    public LocalDate getSorteio() {
-        return sorteio;
+    public String getSorteio() {
+        return sorteio.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
     }
 
     public void setSorteio(LocalDate sorteio) {
