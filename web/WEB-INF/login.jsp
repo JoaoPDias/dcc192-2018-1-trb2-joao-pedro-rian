@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
-        <title>Minera Git - Requisitos</title>
+        <title>Login - Amigo Oculto</title>
     </head>
     <body>
         <div class="row">
@@ -21,9 +21,9 @@
                 <div class="box-parent-login">
                     <div class="well bg-white box-login">
                         
-                        <center><h2>Minera Git - Requisitos</h2></center>
+                        <center><h2>Amigo Oculto</h2></center>
                         <br/>
-                        <img src="MineraRequisitos.jpg" class="rounded mx-auto d-block" alt="Minera Requisitos">
+                        <img src=".jpg" class="rounded mx-auto d-block" alt="Imagem">
                         <br/>
                         <form method="post">
                             <fieldset>
@@ -38,11 +38,11 @@
                                     <input class="form-control ls-login-bg-password input-lg" id="userPassword" type="password" aria-label="Senha" placeholder="Senha">
                                 </div>
 
-                                <center><a href="https://github.com/">Esqueci minha senha</a></center><br/>
+                                <center><a href="">Esqueci minha senha</a></center><br/>
 
                                 <input type="submit" value="Entrar" class="btn btn-primary btn-lg btn-block" name="acessar" >
-                                <center>Não possui conta no GitHub? </center>
-                                <center> <a href="https://github.com/">Cadastre-se agora</a></center>
+                                <center>Não possui cadastro? </center>
+                                <center> <a href="inscricao.html">Cadastre-se agora</a></center>
 
                             </fieldset>
                         </form>

@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
         <title>Amigo Oculto - DCC192</title>
         
          <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
@@ -21,13 +22,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Inscrição <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="inscricao.html">Inscrição <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="repositorio.html">Eventos</a>
+                            <a class="nav-link" href="">Eventos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
+                            <a class="nav-link" href="login.html">Login</a>
                         </li>
                        
                         <li class="nav-item">
