@@ -7,6 +7,7 @@ public class IndexCommand implements Comando{
 
     @Override
     public void exec(HttpServletRequest request, HttpServletResponse response) {
+        
 
     }
     
