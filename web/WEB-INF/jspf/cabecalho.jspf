@@ -1,0 +1,24 @@
+<%@ page pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+    <head>    
+        <title> Minera Requisitos </title>
+        <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="C:\Users\Rian Alves\Desktop\Trabalho DDS\MineraRequisitos.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                Minera Git - Requisitos
+            </a>
+        </nav>
+        </header>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="index.html">GitHub Minerator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </nav>
