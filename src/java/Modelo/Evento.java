@@ -8,21 +8,31 @@ import java.util.List;
 public class Evento {
     String titulo; 
     Integer codigo;
-    LocalDate data, sorteio;
+    LocalDate dataEvento, dataSorteio;
+    Double valorMinimo;
+
+    public Double getValorMinimo() {
+        return valorMinimo;
+    }
+
+    public void setValorMinimo(Double valorMinimo) {
+        this.valorMinimo = valorMinimo;
+    }
     List<Participante> participantes;
 
     public Evento(String titulo, Integer codigo, LocalDate data, LocalDate sorteio) {
         this.titulo = titulo;
         this.codigo = codigo;
-        this.data = data;
-        this.sorteio = sorteio;
+        this.dataEvento = data;
+        this.dataSorteio = sorteio;
     }
     
-     public Evento(String titulo, Integer codigo, String data, String sorteio) {
+     public Evento(Integer codigo,String titulo, Double valorMinimo, String data, String sorteio) {
         this.titulo = titulo;
         this.codigo = codigo;
-        this.data = LocalDate.parse(data, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
-        this.sorteio = LocalDate.parse(sorteio, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        this.valorMinimo = valorMinimo;
+        this.dataEvento = LocalDate.parse(data, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        this.dataSorteio = LocalDate.parse(sorteio, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
     }
 
     public String getTitulo() {
@@ -41,20 +51,20 @@ public class Evento {
         this.codigo = codigo;
     }
 
-    public String getData() {
-        return data.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+    public String getDataEvento() {
+        return dataEvento.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataEvento(LocalDate dataEvento) {
+        this.dataEvento = dataEvento;
     }
 
     public String getSorteio() {
-        return sorteio.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        return dataSorteio.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
     }
 
-    public void setSorteio(LocalDate sorteio) {
-        this.sorteio = sorteio;
+    public void setDataSorteio(LocalDate dataSorteio) {
+        this.dataSorteio = dataSorteio;
     }
 
     public List<Participante> getParticipantes() {

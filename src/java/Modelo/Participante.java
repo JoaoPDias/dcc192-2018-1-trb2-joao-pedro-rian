@@ -5,9 +5,15 @@ public class Participante {
     Participante amigo;
     Integer codigo;
 
-    public Participante(String nome, Integer codigo, String email, String senha) {
+    public Participante(Integer codigo, String nome, String email, String senha) {
         this.nome = nome;
         this.codigo = codigo;
+        this.email = email;
+        this.senha = senha;
+    }
+    
+    public Participante(String nome, String email, String senha) {
+        this.nome = nome;
         this.email = email;
         this.senha = senha;
     }
