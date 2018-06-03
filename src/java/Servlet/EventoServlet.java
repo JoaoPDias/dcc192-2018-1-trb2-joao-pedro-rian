@@ -19,7 +19,7 @@ public class EventoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String> rotas = new HashMap<>();
         rotas.put("/eventos.html", "Comandos.EventoCommand");
-        rotas.put("/index.html", "Comandos.IndexCommand");
+        rotas.put("/index.html", "Comandos.LoginCommand");
         rotas.put("/login.html", "Comandos.LoginCommand");
         rotas.put("/inscricao.html", "Comandos.InscricaoCommand");
         rotas.put("/inscritos.html", "Comandos.InscritosCommand");
@@ -34,5 +34,24 @@ public class EventoServlet extends HttpServlet {
             Logger.getLogger(EventoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Map<String, String> rotas = new HashMap<>();        
+        rotas.put("/index.html", "Comandos.LoginPostCommand");
+        rotas.put("/login.html", "Comandos.LoginPostCommand");
+        rotas.put("/inscricao.html", "Comandos.InscricaoPostCommand");
+        rotas.put("/novo-evento.html", "Comandos.NovoEventoPostCommand");
+        
+        String clazzName = rotas.get(request.getServletPath());
+        try{
+            Comando comando = (Comando)Class.forName(clazzName).newInstance();
+            comando.exec(request, response);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(EventoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     
 }
