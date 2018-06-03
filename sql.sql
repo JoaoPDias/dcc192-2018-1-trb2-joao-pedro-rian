@@ -16,3 +16,11 @@ CREATE TABLE PARTICIPANTE(
     CONSTRAINT PK_CODIGO_PARTICIPANTE PRIMARY KEY (CODIGO),
     CONSTRAINT FK_AMIGO FOREIGN KEY (FK_AMIGO) REFERENCES PARTICIPANTE(CODIGO)
 );
+
+CREATE TABLE EVENTO_PARTICIPANTE(
+		      CODEVENTO INTEGER NOT NULL,
+                      CODPARTICIPANTE INTEGER NOT NULL,
+                      constraint FK foreign key(codaluno) references aluno(codigo),
+                      constraint fk6 foreign key(codturma) references turma(codigo),
+                      primary key(codaluno,codturma)
+);
