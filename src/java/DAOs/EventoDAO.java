@@ -47,7 +47,7 @@ public class EventoDAO {
             comando.setString(1, evento.getTitulo());
             comando.setDouble(2, evento.getValorMinimo());
             comando.setString(3, evento.getDataEvento());
-            comando.setString(4, evento.getDataEvento());
+            comando.setString(4, evento.getSorteio());
             comando.execute();
             comando.close();
         }
@@ -63,7 +63,7 @@ public class EventoDAO {
             comando.setString(1, evento.getTitulo());
             comando.setDouble(2, evento.getValorMinimo());
             comando.setString(3, evento.getDataEvento());
-            comando.setString(4, evento.getDataEvento());
+            comando.setString(4, evento.getSorteio());
             comando.setInt(5, evento.getCodigo());
             comando.execute();
             comando.close();
