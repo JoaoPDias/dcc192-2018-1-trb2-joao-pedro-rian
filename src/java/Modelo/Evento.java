@@ -11,6 +11,7 @@ public class Evento {
     LocalDate dataEvento, dataSorteio;
     Double valorMinimo;
 
+    
     public Double getValorMinimo() {
         return valorMinimo;
     }
@@ -30,6 +31,12 @@ public class Evento {
      public Evento(Integer codigo,String titulo, Double valorMinimo, String data, String sorteio) {
         this.titulo = titulo;
         this.codigo = codigo;
+        this.valorMinimo = valorMinimo;
+        this.dataEvento = LocalDate.parse(data, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        this.dataSorteio = LocalDate.parse(sorteio, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+    }
+     public Evento(String titulo, Double valorMinimo, String data, String sorteio) {
+        this.titulo = titulo;
         this.valorMinimo = valorMinimo;
         this.dataEvento = LocalDate.parse(data, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
         this.dataSorteio = LocalDate.parse(sorteio, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));

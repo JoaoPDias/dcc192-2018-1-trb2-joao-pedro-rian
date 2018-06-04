@@ -24,8 +24,8 @@
                         <input class="form-control" type="text" placeholder="Insira aqui um Título para seu Evento" name="titulo"/><br/>
                     </div>
                     <div class="form-group">
-                    <label>Número Mínimo de Participantes:</label>    
-                        <input class="form-control" type="text" placeholder="Insira aqui o número Mínimo de participantes" name="minimo"/><br/>
+                    <label>Valor Mínimo do Presente: </label>    
+                        <input class="form-control" type="text" placeholder="Insira aqui o valor Mínimo do presente" name="minimo"/><br/>
                     </div>
                     <div class="form-group">
                         <label>Data do Sorteio:</label>    
