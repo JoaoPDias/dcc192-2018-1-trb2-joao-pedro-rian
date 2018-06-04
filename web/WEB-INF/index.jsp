@@ -43,5 +43,32 @@
     </head>
     <body>
         <h1>Colocar uma Imagem</h1>
+        <br/>
+        <h3><center>Lista de Eventos que você participa</center></h3>
+        <br/>
+               <table class="table table-hover">
+                       <thead>
+                            <tr class="table-success">
+                            <th><center>Código</center></th>
+                            <th><center>Título</center></th>
+                            <th><center>Data do Sorteio</center></th>
+                            <th><center>Data do Evento</center></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="evento" items="${eventos}">
+
+                                <tr>
+                                    <td><center>${evento.nome}</center></td> 
+                                    <td><center>${evento.titulo}</center></td> 
+                                    <td><center>${evento.valorMinimo}</center></td> 
+                                    <td><center>${evento.dataSorteio}</center></td> 
+                                    <td><center>${evento.dataEvento}</center></td> 
+                                  
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+
+                        </table>
     </body>
 </html>
