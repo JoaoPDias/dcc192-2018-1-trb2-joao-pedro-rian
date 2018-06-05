@@ -4,6 +4,8 @@ CREATE TABLE EVENTO(
     MINIMO DECIMAL (5,2) NOT NULL,
     DATAEVENTO VARCHAR(10),
     DATASORTEIO VARCHAR(10),
+	CODCRIADOR INTEGER,
+    constraint FK_CRIADOR foreign key(CODCRIADOR) references PARTICIPANTE(codigo)
     CONSTRAINT PK_CODIGO_EVENTO PRIMARY KEY (CODIGO)
 );
 
@@ -12,15 +14,15 @@ CREATE TABLE PARTICIPANTE(
     NOME VARCHAR (100) NOT NULL,
     EMAIL VARCHAR (100) NOT NULL,
     SENHA VARCHAR (100) NOT NULL,
-    FK_AMIGO INTEGER,
-    CONSTRAINT PK_CODIGO_PARTICIPANTE PRIMARY KEY (CODIGO),
-    CONSTRAINT FK_AMIGO FOREIGN KEY (FK_AMIGO) REFERENCES PARTICIPANTE(CODIGO)
+    CONSTRAINT PK_CODIGO_PARTICIPANTE PRIMARY KEY (CODIGO)
 );
 
 CREATE TABLE EVENTO_PARTICIPANTE(
-		      CODEVENTO INTEGER NOT NULL,
+					  CODEVENTO INTEGER NOT NULL,
                       CODPARTICIPANTE INTEGER NOT NULL,
-                      constraint FK foreign key(codaluno) references aluno(codigo),
-                      constraint fk6 foreign key(codturma) references turma(codigo),
-                      primary key(codaluno,codturma)
+					  CODAMIGO INTEGER,
+                      constraint FK_EVENTO foreign key(CODEVENTO) references EVENTO(codigo),
+                      constraint fk_PARTICIPANTE foreign key(CODPARTICIPANTE) references PARTICIPANTE(codigo),
+					  CONSTRAINT FK_AMIGO FOREIGN KEY (CODAMIGO) REFERENCES PARTICIPANTE(CODIGO)
+                      primary key(CODEVENTO,CODPARTICIPANTE)
 );
