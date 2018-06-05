@@ -36,6 +36,8 @@
                         <label>Data do Evento:</label>    
                                     <input class="form-control" type="date" name="evento"/><br/>
                     </div>
+                    
+                    <input type="hidden" value="${criador}" name="criador">
                     <input type="submit" class="btn btn-success"/>
                     <input type="reset" class="btn btn-danger"/>
                 </form>

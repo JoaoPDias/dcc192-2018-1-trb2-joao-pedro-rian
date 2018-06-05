@@ -44,7 +44,7 @@
                                 <input type="submit" value="Entrar" class="btn btn-primary btn-lg btn-block" name="acessar" >
 
                                 <center>Não possui cadastro? </center>
-                                <center> <a href="inscricao.html">Cadastre-se agora</a></center>
+                                <center> <a href="registro.html">Cadastre-se agora</a></center>
 
                             </fieldset>
                         </form>
