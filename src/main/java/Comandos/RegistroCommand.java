@@ -8,17 +8,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class NovoEventoCommand implements Comando {
+public class RegistroCommand implements Comando{
 
     @Override
     public void exec(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String id = request.getParameter("usuario");
-            request.setAttribute("criador", id);
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/novoEvento.jsp");
+            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/registro.jsp");
             despachante.forward(request, response);
-        } catch (ServletException | IOException ex) {
+        } catch (ServletException ex) {
+            Logger.getLogger(RegistroCommand.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(RegistroCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 }

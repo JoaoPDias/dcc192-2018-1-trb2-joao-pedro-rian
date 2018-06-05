@@ -12,14 +12,7 @@ public class InscricaoCommand implements Comando{
 
     @Override
     public void exec(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/inscricao.jsp");
-            despachante.forward(request, response);
-        } catch (ServletException ex) {
-            Logger.getLogger(InscricaoCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(InscricaoCommand.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
     
 }

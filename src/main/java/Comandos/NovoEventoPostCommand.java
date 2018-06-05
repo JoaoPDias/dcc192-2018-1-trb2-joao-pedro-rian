@@ -1,6 +1,7 @@
 package Comandos;
 
 import DAOs.EventoDAO;
+import DAOs.ParticipanteDAO;
 import Modelo.Evento;
 import Modelo.Participante;
 import com.google.gson.Gson;
@@ -22,9 +23,13 @@ public class NovoEventoPostCommand implements Comando {
         Double minimo = Double.parseDouble(request.getParameter("minimo"));
         String dtsorteio = request.getParameter("sorteio");
         String dtevento = request.getParameter("evento");
-        EventoDAO dao = EventoDAO.getInstance();
-        Evento evento = new Evento(titulo, minimo,dtevento,dtsorteio);
+        Integer IDcriador = Integer.parseInt(request.getParameter("criador"));
+        Participante criador = null;
+        request.setAttribute("usuario", IDcriador);
         try {
+            criador = ParticipanteDAO.getInstance().listbyID(IDcriador);
+            EventoDAO dao = EventoDAO.getInstance();
+            Evento evento = new Evento(titulo, minimo, dtevento, dtsorteio, criador);
             dao.adicionar(evento);
             List<Evento> eventos = dao.listAll();
             Gson gson = new Gson();

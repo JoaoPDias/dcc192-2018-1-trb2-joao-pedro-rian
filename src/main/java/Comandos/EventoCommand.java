@@ -18,10 +18,12 @@ public class EventoCommand implements Comando {
     public void exec(HttpServletRequest request, HttpServletResponse response) {
 
         try {
+            Integer id = Integer.parseInt(request.getParameter("usuario"));
             EventoDAO dao = EventoDAO.getInstance();
-            List<Evento> eventos = dao.listAll();
-            RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+            List<Evento> eventos = dao.listByIDCriador(id);
+            RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/eventos.jsp");
             request.setAttribute("eventos", eventos);
+            request.setAttribute("usuario", id);
             dispacher.forward(request, response);
             
        } catch (ServletException | IOException | SQLException ex) {

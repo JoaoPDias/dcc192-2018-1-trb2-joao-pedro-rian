@@ -35,7 +35,6 @@ public class LoginPostCommand implements Comando {
                 Gson gson = new Gson();
                 String eventosJson = gson.toJson(eventos);
                 request.setAttribute("eventosJson", eventosJson);
-                request.setAttribute("eventos", eventos);
                 request.setAttribute("usuario", participante.getCodigo());
                 RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/index.jsp");
                 despachante.forward(request, response);
