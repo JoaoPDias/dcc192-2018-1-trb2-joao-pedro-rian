@@ -88,4 +88,15 @@ public class ParticipanteDAO {
         consulta.close();
         return participante;
     }
+    
+    public Participante listbyID(Integer id) throws SQLException {
+        Participante participante;
+        try (PreparedStatement consulta = conexao.prepareStatement("Select * from participante where codigo = ?")) {
+            consulta.setInt(1,id);
+            ResultSet resultado = consulta.executeQuery();
+            resultado.next();
+            participante = new Participante(resultado.getInt("codigo"), resultado.getString("nome"), resultado.getString("email"), resultado.getString("senha"));
+        }
+        return participante;
+    }
 }
