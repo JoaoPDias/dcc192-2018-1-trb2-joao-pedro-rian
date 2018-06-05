@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "EventoServlet", urlPatterns = {"/eventos.html", "/index.html","/login.html", "/inscricao.html", "/inscritos.html", "/novo-evento.html", "/amigo.html"})
+@WebServlet(name = "EventoServlet", urlPatterns = {"/eventos.html", "/index.html","/login.html", "/inscricao.html", "/inscritos.html", "/novo-evento.html", "/amigo.html","/registro.html"})
 public class EventoServlet extends HttpServlet {
 
     @Override
@@ -21,7 +21,7 @@ public class EventoServlet extends HttpServlet {
         rotas.put("/eventos.html", "Comandos.EventoCommand");
         rotas.put("/index.html", "Comandos.LoginCommand");
         rotas.put("/login.html", "Comandos.LoginCommand");
-        rotas.put("/inscricao.html", "Comandos.InscricaoCommand");
+        rotas.put("/registro.html", "Comandos.RegistroCommand");
         rotas.put("/inscritos.html", "Comandos.InscritosCommand");
         rotas.put("/novo-evento.html", "Comandos.NovoEventoCommand");
         rotas.put("/amigo.html", "Comandos.AmigoCommand");
@@ -41,6 +41,7 @@ public class EventoServlet extends HttpServlet {
         rotas.put("/index.html", "Comandos.LoginPostCommand");
         rotas.put("/login.html", "Comandos.LoginPostCommand");
         rotas.put("/inscricao.html", "Comandos.InscricaoPostCommand");
+        rotas.put("/registro.html", "Comandos.RegistroPostCommand");
         rotas.put("/novo-evento.html", "Comandos.NovoEventoPostCommand");
         
         String clazzName = rotas.get(request.getServletPath());
