@@ -6,20 +6,14 @@ import java.time.format.FormatStyle;
 import java.util.List;
 
 public class Evento {
-    String titulo; 
+
+    String titulo;
     Integer codigo;
     LocalDate dataEvento, dataSorteio;
     Double valorMinimo;
+    Participante criador;
     List<Participante> participantes;
 
-    
-    public Double getValorMinimo() {
-        return valorMinimo;
-    }
-
-    public void setValorMinimo(Double valorMinimo) {
-        this.valorMinimo = valorMinimo;
-    }
 
     public Evento(String titulo, Integer codigo, LocalDate data, LocalDate sorteio) {
         this.titulo = titulo;
@@ -27,19 +21,21 @@ public class Evento {
         this.dataEvento = data;
         this.dataSorteio = sorteio;
     }
-    
-     public Evento(Integer codigo,String titulo, Double valorMinimo, String data, String sorteio) {
+
+    public Evento(Integer codigo, String titulo, Double valorMinimo, String data, String sorteio, Participante criador) {
+        DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.titulo = titulo;
         this.codigo = codigo;
         this.valorMinimo = valorMinimo;
-        this.dataEvento = LocalDate.parse(data, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
-        this.dataSorteio = LocalDate.parse(sorteio, DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        this.dataEvento = LocalDate.parse(data, dt);
+        this.dataSorteio = LocalDate.parse(sorteio, dt);
     }
-     public Evento(String titulo, Double valorMinimo, String data, String sorteio) {
+
+    public Evento(String titulo, Double valorMinimo, String data, String sorteio, Participante criador) {
         DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.titulo = titulo;
         this.valorMinimo = valorMinimo;
-        this.dataEvento = LocalDate.parse(data, dt );
+        this.dataEvento = LocalDate.parse(data, dt);
         this.dataSorteio = LocalDate.parse(sorteio, dt);
     }
 
@@ -82,8 +78,24 @@ public class Evento {
     public void setParticipantes(List<Participante> participantes) {
         this.participantes = participantes;
     }
+
+    public Double getValorMinimo() {
+        return valorMinimo;
+    }
+
+    public void setValorMinimo(Double valorMinimo) {
+        this.valorMinimo = valorMinimo;
+    }
+
+    public Participante getCriador() {
+        return criador;
+    }
+
+    public void setCriador(Participante criador) {
+        this.criador = criador;
+    }
     
     
-    
-    public void sorteia(){}
+    public void sorteia() {
+    }
 }
