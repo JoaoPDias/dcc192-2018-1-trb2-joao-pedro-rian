@@ -30,7 +30,7 @@
                             <fieldset>
 
                                 <div class="form-group ls-login-user">
-                                    <label for="userLogin">Usuário</label>
+                                    <label for="userLogin">E-mail</label>
                                     <input class="form-control ls-login-bg-user input-lg" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário" name="usuario">
                                 </div>
 

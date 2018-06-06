@@ -1,24 +1,33 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-    <head>    
-        <title> Minera Requisitos </title>
-        <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
-    </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                <img src="C:\Users\Rian Alves\Desktop\Trabalho DDS\MineraRequisitos.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-                Minera Git - Requisitos
-            </a>
-        </nav>
-        </header>
-        
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="index.html">GitHub Minerator</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="inicial.html?usuario=${usuario}">
+                <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">Amigo Oculto</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="novo-evento.html?usuario=${usuario}">Novo Evento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="eventos.html?usuario=${usuario}">Gerenciar Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Sair</a>
+                    </li>
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Busque na Plataforma">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Busca</button>
+                </form>
+            </div>
         </nav>
