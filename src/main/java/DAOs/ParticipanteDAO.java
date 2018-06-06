@@ -1,10 +1,12 @@
 package DAOs;
 
+import Modelo.Evento;
 import Modelo.Participante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,8 +36,10 @@ public class ParticipanteDAO {
         List<Participante> participantes = new ArrayList<>();
         PreparedStatement consulta = conexao.prepareStatement("Select * from participante");
         ResultSet resultado = consulta.executeQuery();
-        while (resultado.next()) {
-            participantes.add(new Participante(resultado.getInt("codigo"), resultado.getString("nome"), resultado.getString("email"), resultado.getString("senha")));
+        if (resultado.next()) {
+            do {
+                participantes.add(new Participante(resultado.getInt("codigo"), resultado.getString("nome"), resultado.getString("email"), resultado.getString("senha")));
+            } while (resultado.next());
         }
         return participantes;
     }
@@ -76,7 +80,7 @@ public class ParticipanteDAO {
 
     public Participante getUsuario(String nome, String senha) throws SQLException {
         Participante participante = null;
-        PreparedStatement consulta = conexao.prepareStatement("Select * from participante where nome = ? AND senha = ?");
+        PreparedStatement consulta = conexao.prepareStatement("Select * from participante where email = ? AND senha = ?");
         consulta.setString(1, nome);
         consulta.setString(2, senha);
         consulta.setMaxRows(1);
@@ -88,15 +92,29 @@ public class ParticipanteDAO {
         consulta.close();
         return participante;
     }
-    
+
     public Participante listbyID(Integer id) throws SQLException {
         Participante participante;
         try (PreparedStatement consulta = conexao.prepareStatement("Select * from participante where codigo = ?")) {
-            consulta.setInt(1,id);
+            consulta.setInt(1, id);
             ResultSet resultado = consulta.executeQuery();
             resultado.next();
             participante = new Participante(resultado.getInt("codigo"), resultado.getString("nome"), resultado.getString("email"), resultado.getString("senha"));
         }
         return participante;
+    }
+
+    public List<Participante> listByIDEvento(Integer id) throws SQLException {
+        List<Participante> participantes = new ArrayList<>();
+        PreparedStatement consulta = conexao.prepareStatement("select * from participante inner join evento_participante on codigo = codparticipante where codevento = ? order by nome DESC");
+        consulta.setInt(1, id);
+        ResultSet resultado = consulta.executeQuery();
+        if (resultado.next()) {
+
+            do {
+                participantes.add(new Participante(resultado.getInt("codigo"), resultado.getString("nome"), resultado.getString("email"), resultado.getString("senha")));
+            } while (resultado.next());
+        }
+        return participantes;
     }
 }
