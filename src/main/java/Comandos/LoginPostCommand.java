@@ -30,14 +30,9 @@ public class LoginPostCommand implements Comando {
                 despachante.forward(request, response);
 
             } else {
-                EventoDAO eventodao = EventoDAO.getInstance();
-                List<Evento> eventos = eventodao.listAll();
-                Gson gson = new Gson();
-                String eventosJson = gson.toJson(eventos);
-                request.setAttribute("eventosJson", eventosJson);
                 request.setAttribute("usuario", participante.getCodigo());
-                RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/index.jsp");
-                despachante.forward(request, response);
+                IndexCommand comando = new IndexCommand();
+                comando.exec(request, response);
             }
         } catch (ServletException | IOException | SQLException ex) {
             Logger.getLogger(LoginPostCommand.class.getName()).log(Level.SEVERE, null, ex);

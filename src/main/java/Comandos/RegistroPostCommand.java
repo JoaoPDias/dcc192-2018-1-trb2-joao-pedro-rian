@@ -22,9 +22,8 @@ public class RegistroPostCommand implements Comando {
         Participante participante = new Participante(nome, email, senha);     
         try {
             dao.adicionar(participante);
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/login.jsp");
-            despachante.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+            response.sendRedirect("index.html");
+        } catch (SQLException | IOException ex) {
             Logger.getLogger(NovoEventoPostCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
