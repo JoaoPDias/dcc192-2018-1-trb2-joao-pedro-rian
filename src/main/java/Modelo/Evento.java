@@ -1,9 +1,14 @@
 package Modelo;
 
+import DAOs.EventoDAO;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Evento {
 
@@ -14,21 +19,24 @@ public class Evento {
     Participante criador;
     List<Participante> participantes;
 
-
-    public Evento(String titulo, Integer codigo, LocalDate data, LocalDate sorteio) {
+    public Evento(String titulo, Integer codigo, LocalDate data, LocalDate sorteio, Participante criador, List<Participante> participantes) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.dataEvento = data;
         this.dataSorteio = sorteio;
+        this.criador = criador;
+        this.participantes = participantes;
     }
 
-    public Evento(Integer codigo, String titulo, Double valorMinimo, String data, String sorteio, Participante criador) {
+    public Evento(Integer codigo, String titulo, Double valorMinimo, String data, String sorteio, Participante criador, List<Participante> participantes) {
         DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.titulo = titulo;
         this.codigo = codigo;
         this.valorMinimo = valorMinimo;
         this.dataEvento = LocalDate.parse(data, dt);
         this.dataSorteio = LocalDate.parse(sorteio, dt);
+        this.criador = criador;
+        this.participantes = participantes;
     }
 
     public Evento(String titulo, Double valorMinimo, String data, String sorteio, Participante criador) {
@@ -37,6 +45,25 @@ public class Evento {
         this.valorMinimo = valorMinimo;
         this.dataEvento = LocalDate.parse(data, dt);
         this.dataSorteio = LocalDate.parse(sorteio, dt);
+        this.criador = criador;
+    }
+
+    public Evento(String titulo, Double valorMinimo, String data, String sorteio, Participante criador, DateTimeFormatter dt) {
+        this.titulo = titulo;
+        this.valorMinimo = valorMinimo;
+        this.dataEvento = LocalDate.parse(data, dt);
+        this.dataSorteio = LocalDate.parse(sorteio, dt);
+        this.criador = criador;
+    }
+
+    public Evento(Integer codigo, String titulo, Double valorMinimo, String data, String sorteio, Participante criador, DateTimeFormatter dt, List<Participante> participantes) {
+        this.titulo = titulo;
+        this.codigo = codigo;
+        this.valorMinimo = valorMinimo;
+        this.dataEvento = LocalDate.parse(data, dt);
+        this.dataSorteio = LocalDate.parse(sorteio, dt);
+        this.criador = criador;
+        this.participantes = participantes;
     }
 
     public String getTitulo() {
@@ -94,8 +121,21 @@ public class Evento {
     public void setCriador(Participante criador) {
         this.criador = criador;
     }
-    
-    
-    public void sorteia() {
+
+    public void sorteia() throws SQLException {
+        if (participantes != null && participantes.size() > 1) {
+            List<Participante> amigos = participantes;
+            Collections.shuffle(amigos, new Random());
+            int auxiliar = 1;
+            EventoDAO dao = EventoDAO.getInstance();
+            for (int i = 0; i < amigos.size(); i++) {
+                if (auxiliar<amigos.size()) {
+                    dao.adicionarAmigo(this.codigo, amigos.get(i).getCodigo(), amigos.get(auxiliar).getCodigo());
+                    auxiliar++;
+                } else {
+                    dao.adicionarAmigo(this.codigo, amigos.get(i).getCodigo(), amigos.get(0).getCodigo());
+                }
+            }
+        }
     }
 }
