@@ -10,7 +10,7 @@ var addCols = function (eventos) {
         var myPanel = $('<div class="card text-white bg-success mb-3" style="max-width: 16rem">'
                 + '<div class="card-header"><h4>'+eventos[i].titulo+'</h4></div>'
                 + '<div class="card-body">'
-                + '<h6>Valor Mínimo: R$ '+Float.parseFloat(eventos[i].valorMinimo).toFixed(2)+'</h5>'
+                + '<h6>Valor Mínimo: R$ '+parseFloat(eventos[i].valorMinimo).toFixed(2)+'</h5>'
                 + '<h6>Data do Evento: '+new Date(year,month,day).toLocaleDateString()+'</h5>'
                 + '<h6>Data do Sorteio: '+new Date(yearS,monthS,dayS).toLocaleDateString()+'</h5>'
                 + '</div>'
