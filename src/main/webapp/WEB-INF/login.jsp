@@ -16,14 +16,12 @@
     <body>
         <div class="row">
             <div class="col"></div>
-            <div class="col"><br/><br/>
-
-
+            <div class="col"></div>
+            <div class="col"><br/>
                 <div class="box-parent-login">
                     <div class="well bg-white box-login">
 
-                        <center><h2>Amigo Oculto</h2></center>
-                        <br/>
+                        
                         <img src="icones/Logotipo.png" class="rounded mx-auto d-block" width="500" height="166" alt="Imagem">
                         <br/>
                         <form method="post">
@@ -56,6 +54,7 @@
                     </c:if>
                 </div>
             </div>
+            <div class="col"></div>
             <div class="col"></div>
         </div>
 
