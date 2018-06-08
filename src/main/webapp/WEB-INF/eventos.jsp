@@ -26,7 +26,7 @@
             <tbody>
                 <c:forEach var="evento" items="${eventos}">
                     <tr class="text-center">
-                        <td>${evento.titulo}</td> 
+                        <td><a href="amigo.html?codEvento=${evento.codigo}">${evento.titulo}</a></td> 
                         <td>${evento.valorMinimo}</td> 
                         <td>${evento.dataSorteio}</td> 
                         <td>${evento.dataEvento}</td> 
