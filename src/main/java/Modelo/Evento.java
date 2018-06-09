@@ -18,17 +18,21 @@ public class Evento {
     Double valorMinimo;
     Participante criador;
     List<Participante> participantes;
+    Integer totalParticipantes;
+    Boolean sorteado;
 
-    public Evento(String titulo, Integer codigo, LocalDate data, LocalDate sorteio, Participante criador, List<Participante> participantes) {
+    public Evento(String titulo, Integer codigo, LocalDate data, LocalDate sorteio, Participante criador, List<Participante> participantes, boolean sorteado) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.dataEvento = data;
         this.dataSorteio = sorteio;
         this.criador = criador;
         this.participantes = participantes;
+        totalParticipantes = participantes.size();
+        this.sorteado = sorteado;
     }
 
-    public Evento(Integer codigo, String titulo, Double valorMinimo, String data, String sorteio, Participante criador, List<Participante> participantes) {
+    public Evento(Integer codigo, String titulo, Double valorMinimo, String data, String sorteio, Participante criador, List<Participante> participantes,boolean sorteado) {
         DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.titulo = titulo;
         this.codigo = codigo;
@@ -37,6 +41,8 @@ public class Evento {
         this.dataSorteio = LocalDate.parse(sorteio, dt);
         this.criador = criador;
         this.participantes = participantes;
+        totalParticipantes = participantes.size();
+        this.sorteado = sorteado;
     }
 
     public Evento(String titulo, Double valorMinimo, String data, String sorteio, Participante criador) {
@@ -56,7 +62,7 @@ public class Evento {
         this.criador = criador;
     }
 
-    public Evento(Integer codigo, String titulo, Double valorMinimo, String data, String sorteio, Participante criador, DateTimeFormatter dt, List<Participante> participantes) {
+    public Evento(Integer codigo, String titulo, Double valorMinimo, String data, String sorteio, Participante criador, DateTimeFormatter dt, List<Participante> participantes, boolean sorteado) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.valorMinimo = valorMinimo;
@@ -64,6 +70,8 @@ public class Evento {
         this.dataSorteio = LocalDate.parse(sorteio, dt);
         this.criador = criador;
         this.participantes = participantes;
+        totalParticipantes = participantes.size();
+        this.sorteado = sorteado;
     }
 
     public String getTitulo() {
@@ -74,6 +82,15 @@ public class Evento {
         this.titulo = titulo;
     }
 
+    public Integer getTotalParticipantes() {
+        return totalParticipantes;
+    }
+
+    public void setTotalParticipantes(Integer totalParticipantes) {
+        this.totalParticipantes = totalParticipantes;
+    }
+    
+    
     public Integer getCodigo() {
         return codigo;
     }
@@ -121,9 +138,10 @@ public class Evento {
     public void setCriador(Participante criador) {
         this.criador = criador;
     }
+    
 
     public void sorteia() throws SQLException {
-        if (participantes != null && participantes.size() > 1) {
+        if (participantes != null) {
             List<Participante> amigos = participantes;
             Collections.shuffle(amigos, new Random());
             int auxiliar = 1;
@@ -136,6 +154,15 @@ public class Evento {
                     dao.adicionarAmigo(this.codigo, amigos.get(i).getCodigo(), amigos.get(0).getCodigo());
                 }
             }
+            dao.setSorteado(this.codigo);
         }
+    }
+
+    public Boolean getSorteado() {
+        return sorteado;
+    }
+
+    public void setSorteado(Boolean sorteado) {
+        this.sorteado = sorteado;
     }
 }

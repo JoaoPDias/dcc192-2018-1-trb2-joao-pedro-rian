@@ -28,6 +28,7 @@ public class EventoServlet extends HttpServlet {
         rotas.put("/inicial.html", "Comandos.IndexCommand");
         rotas.put("/registro.html", "Comandos.RegistroCommand");
         rotas.put("/inscritos.html", "Comandos.InscritosCommand");
+        rotas.put("/inscricao.html", "Comandos.InscricaoCommand");
         rotas.put("/novo-evento.html", "Comandos.NovoEventoCommand");
         rotas.put("/amigo.html", "Comandos.AmigoCommand");
         
