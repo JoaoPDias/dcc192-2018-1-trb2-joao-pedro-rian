@@ -147,7 +147,7 @@ public class ParticipanteDAO {
     public Participante getAmigoOculto(Integer idEvento, Integer idParticipante) throws SQLException{
         Participante participante;
         String sql = "SELECT codamigo FROM PARTICIPANTE INNER JOIN EVENTO_PARTICIPANTE ON CODIGO = CODPARTICIPANTE WHERE CODEVENTO = ? AND CODPARTICIPANTE = ?";
-        try (PreparedStatement consulta = conexao.prepareStatement("Select * from participante where codigo = ?")) {
+        try (PreparedStatement consulta = conexao.prepareStatement(sql)) {
             consulta.setInt(1, idEvento);
             consulta.setInt(2, idParticipante);
             ResultSet resultado = consulta.executeQuery();

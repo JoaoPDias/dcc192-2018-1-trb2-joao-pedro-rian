@@ -24,7 +24,7 @@ public class InscricaoPostCommand implements Comando {
             for (String value : values) {
                 dao.adicionarParticipacao(codEvento, Integer.parseInt(value));
             }
-            response.sendRedirect("inscritos.html?evento=" + codEvento + "&usuario=" + codUsuario);
+            response.sendRedirect("inscritos.html?codEvento=" + codEvento + "&usuario=" + codUsuario);
         } catch (SQLException | IOException ex) {
             Logger.getLogger(InscricaoPostCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

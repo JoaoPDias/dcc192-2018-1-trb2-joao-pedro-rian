@@ -14,7 +14,7 @@ public class NovoEventoCommand implements Comando {
     public void exec(HttpServletRequest request, HttpServletResponse response) {
         try {
             String id = request.getParameter("usuario");
-            request.setAttribute("criador", id);
+            request.setAttribute("usuario", id);
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/novoEvento.jsp");
             despachante.forward(request, response);
         } catch (ServletException | IOException ex) {

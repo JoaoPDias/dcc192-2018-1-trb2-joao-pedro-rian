@@ -10,7 +10,7 @@ public class Conexao {
 
     public static Connection getInstance() throws SQLException {
         if (conexao == null) {
-            conexao = DriverManager.getConnection("jdbc:derby://localhost:1527/AmigoOculto", "usuario", "12345");
+            conexao = DriverManager.getConnection("jdbc:derby://localhost:1527/AmigoOculto", "Usuario", "12345");
         }
         return conexao;
     }

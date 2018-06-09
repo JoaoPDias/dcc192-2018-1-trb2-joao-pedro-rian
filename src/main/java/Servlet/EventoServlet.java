@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "EventoServlet", urlPatterns = {"/eventos.html", "/index.html", "/inscricao.html", "/inscritos.html", "/novo-evento.html", "/amigo.html","/registro.html","/inicial.html"})
+@WebServlet(name = "EventoServlet", urlPatterns = {"/eventos.html", "/sorteio.html","/index.html", "/inscricao.html", "/inscritos.html", "/novo-evento.html", "/amigo.html","/registro.html","/inicial.html"})
 public class EventoServlet extends HttpServlet {
 
     @Override
@@ -31,6 +31,7 @@ public class EventoServlet extends HttpServlet {
         rotas.put("/inscricao.html", "Comandos.InscricaoCommand");
         rotas.put("/novo-evento.html", "Comandos.NovoEventoCommand");
         rotas.put("/amigo.html", "Comandos.AmigoCommand");
+        rotas.put("/sorteio.html", "Comandos.SorteioCommand");
         
         String clazzName = rotas.get(request.getServletPath());
         try{
@@ -60,6 +61,7 @@ public class EventoServlet extends HttpServlet {
     }
     
     private void verificaSorteio(){
+        
         try {
             List<Evento> eventos = EventoDAO.getInstance().listByDataSorteio();
             if(!eventos.isEmpty()){

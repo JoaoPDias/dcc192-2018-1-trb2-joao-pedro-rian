@@ -23,7 +23,7 @@ public class NovoEventoPostCommand implements Comando {
         Double minimo = Double.parseDouble(request.getParameter("minimo"));
         String dtsorteio = request.getParameter("sorteio");
         String dtevento = request.getParameter("evento");
-        Integer IDcriador = Integer.parseInt(request.getParameter("criador"));
+        Integer IDcriador = Integer.parseInt(request.getParameter("usuario"));
         Participante criador = null;
         request.setAttribute("usuario", IDcriador);
         try {

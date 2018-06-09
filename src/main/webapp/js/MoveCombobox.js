@@ -15,7 +15,7 @@ function MoveListBoxItem(leftListBoxID, rightListBoxID, isMoveAll) {
 function selectAll(listBox) {
     $("#" + listBox + " option").each(function () {
         $(this).prop('selected', true);
-        alert($(this).val());
+        //alert($(this).val());
     }
     );
     
@@ -23,4 +23,3 @@ function selectAll(listBox) {
 
 
 }
-

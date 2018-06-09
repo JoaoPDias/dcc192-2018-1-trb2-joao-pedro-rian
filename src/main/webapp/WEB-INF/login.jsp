@@ -4,13 +4,9 @@
     Author     : Rian Alves
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
+<%@include file="/WEB-INF/jspf/cabecalho.jspf" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
+        
         <title>Login - Amigo Oculto</title>
     </head>
     <body>
@@ -29,7 +25,7 @@
 
                                 <div class="form-group ls-login-user">
                                     <label for="userLogin">E-mail</label>
-                                    <input class="form-control ls-login-bg-user input-lg" id="userLogin" type="text" aria-label="UsuÃ¡rio" placeholder="UsuÃ¡rio" name="usuario">
+                                    <input class="form-control ls-login-bg-user input-lg" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário" name="usuario">
                                 </div>
 
                                 <div class="form-group ls-login-password">
@@ -41,7 +37,7 @@
 
                                 <input type="submit" value="Entrar" class="btn btn-primary btn-lg btn-block" name="acessar" >
 
-                                <center>NÃ£o possui cadastro? </center>
+                                <center>Não possui cadastro? </center>
                                 <center> <a href="registro.html">Cadastre-se agora</a></center>
 
                             </fieldset>
@@ -58,5 +54,4 @@
             <div class="col"></div>
         </div>
 
-    </body>
-</html>
+<%@include file="/WEB-INF/jspf/rodape.jspf" %>

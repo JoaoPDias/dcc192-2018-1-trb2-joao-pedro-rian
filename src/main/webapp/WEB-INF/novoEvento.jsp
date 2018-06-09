@@ -4,28 +4,24 @@
     Author     : Rian Alves
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
+<%@include file="jspf/cabecalho.jspf" %>
         <title>Crie um novo Evento e divirta-se!</title>
     </head>
     <body>
-    <center><h3>Insira abaixo os dados solicitados para a criaÃ§Ã£o de um novo Evento</h3></center>
+    <br/>
+    <center><h3>Insira abaixo os dados solicitados para a criação de um novo Evento</h3></center>
         <div class="row">
             <div class="col"></div>
             <div class="col"><br/>
                
                 <form method="post">
                     <div class="form-group">
-                    <label>TÃ­tulo do Evento:</label>
-                        <input class="form-control" type="text" placeholder="Insira aqui um TÃ­tulo para seu Evento" name="titulo"/><br/>
+                    <label>Título do Evento:</label>
+                        <input class="form-control" type="text" placeholder="Insira aqui um Título para seu Evento" name="titulo"/><br/>
                     </div>
                     <div class="form-group">
-                    <label>Valor MÃ­nimo do Presente: </label>    
-                        <input class="form-control" type="text" placeholder="Insira aqui o valor MÃ­nimo do presente" name="minimo"/><br/>
+                    <label>Valor Mínimo do Presente: </label>    
+                        <input class="form-control" type="text" placeholder="Insira aqui o valor Mínimo do presente" name="minimo"/><br/>
                     </div>
                     <div class="form-group">
                         <label>Data do Sorteio:</label>    
@@ -37,7 +33,7 @@
                                     <input class="form-control" type="date" name="evento"/><br/>
                     </div>
                     
-                    <input type="hidden" value="${criador}" name="criador">
+                    <input type="hidden" value="${usuario}" name="usuario">
                     <input type="submit" class="btn btn-success"/>
                     <input type="reset" class="btn btn-danger"/>
                 </form>
@@ -45,5 +41,7 @@
             <div class="col"></div>
         </div>
 
-    </body>
-</html>
+
+<br/>
+<br/>
+<%@include file="jspf/rodape.jspf" %>

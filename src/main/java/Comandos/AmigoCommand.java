@@ -1,6 +1,8 @@
 package Comandos;
 
+import DAOs.EventoDAO;
 import DAOs.ParticipanteDAO;
+import Modelo.Evento;
 import Modelo.Participante;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,8 +22,13 @@ public class AmigoCommand implements Comando {
             Integer idEvento = Integer.parseInt(request.getParameter("evento"));
             ParticipanteDAO dao = ParticipanteDAO.getInstance();
             Participante amigo = dao.getAmigoOculto(idEvento, id);
+            EventoDAO eDao = EventoDAO.getInstance();
+            Evento evento = eDao.listByID(idEvento);
+                    
+            request.setAttribute("usuario", id);
             request.setAttribute("amigo", amigo);
-            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/index.jsp");
+            request.setAttribute("evento", evento);
+            RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/amigo.jsp");
             despachante.forward(request, response);
         } catch (SQLException | ServletException | IOException ex) {
             Logger.getLogger(AmigoCommand.class.getName()).log(Level.SEVERE, null, ex);

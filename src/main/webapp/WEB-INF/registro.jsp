@@ -4,16 +4,11 @@
     Author     : Rian Alves
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
+<%@include file="jspf/cabecalho.jspf" %>
         <title>Inscreva-se para ser sorteado</title>
     </head>
     <body>
-    <center><h3>Insira abaixo os dados solicitados para a sua inscriÃ§Ã£o</h3></center>
+    <center><h3>Insira abaixo os dados solicitados para a sua inscrição</h3></center>
         <div class="row">
             <div class="col"></div>
             <div class="col"><br/>
@@ -37,6 +32,4 @@
             </div>
             <div class="col"></div>
         </div>
-
-    </body>
-</html>
+<%@include file="jspf/rodape.jspf" %>
