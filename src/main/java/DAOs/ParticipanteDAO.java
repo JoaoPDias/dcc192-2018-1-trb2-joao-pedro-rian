@@ -117,4 +117,44 @@ public class ParticipanteDAO {
         }
         return participantes;
     }
+
+    public List<Participante> listNaoParticipantesEvento(Integer id) throws SQLException {
+        List<Participante> participantes = new ArrayList<>();
+        PreparedStatement consulta = conexao.prepareStatement("select * from participante where codigo not in (select codparticipante from evento_participante where codevento = ?)");
+        consulta.setInt(1, id);
+        ResultSet resultado = consulta.executeQuery();
+        if (resultado.next()) {
+
+            do {
+                participantes.add(new Participante(resultado.getInt("codigo"), resultado.getString("nome"), resultado.getString("email"), resultado.getString("senha")));
+            } while (resultado.next());
+        }
+        return participantes;
+    }
+
+    public Integer totalParticipantes() throws SQLException {
+        String sql = "SELECT COUNT(*) AS TOTAL FROM PARTICIPANTE";
+        Integer total = null;
+        try (PreparedStatement consulta = conexao.prepareStatement(sql)) {
+            ResultSet resultado = consulta.executeQuery();
+            while (resultado.next()) {
+                total = resultado.getInt("total");
+            }
+        }
+        return total;
+    }
+    
+    public Participante getAmigoOculto(Integer idEvento, Integer idParticipante) throws SQLException{
+        Participante participante;
+        String sql = "SELECT codamigo FROM PARTICIPANTE INNER JOIN EVENTO_PARTICIPANTE ON CODIGO = CODPARTICIPANTE WHERE CODEVENTO = ? AND CODPARTICIPANTE = ?";
+        try (PreparedStatement consulta = conexao.prepareStatement("Select * from participante where codigo = ?")) {
+            consulta.setInt(1, idEvento);
+            consulta.setInt(2, idParticipante);
+            ResultSet resultado = consulta.executeQuery();
+            resultado.next();
+            participante = this.listbyID(resultado.getInt("codamigo"));
+        }
+        return participante;
+    
+    }
 }
