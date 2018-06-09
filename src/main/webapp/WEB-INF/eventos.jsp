@@ -21,15 +21,25 @@
                     <th>Valor Mínimo</th>
                     <th>Data do Sorteio</th>
                     <th>Data do Evento</th>
+                    <th colspan="2">Opções</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach var="evento" items="${eventos}">
                     <tr class="text-center">
-                        <td><a href="amigo.html?codEvento=${evento.codigo}">${evento.titulo}</a></td> 
-                        <td>${evento.valorMinimo}</td> 
+                        <td>${evento.titulo}</td> 
                         <td>${evento.dataSorteio}</td> 
                         <td>${evento.dataEvento}</td> 
+                        <td>${evento.valorMinimo}</td>
+                        <c:choose>
+                            <c:when test="${evento.totalParticipantes<total && not evento.sorteado}">
+                                <td><a href="inscricao.html?codEvento=${evento.codigo}&usuario=${usuario}" class="text-success font-weight-bold">Adicionar Participantes</a></td> 
+                                <td><a href="inscritos.html?codEvento=${evento.codigo}&usuario=${usuario}" class="font-weight-bold">Ver Participantes</a></td> 
+                            </c:when>
+                            <c:otherwise>
+                                <td colspan="2"><a href="inscritos.html?codEvento=${evento.codigo}&usuario=${usuario}" class="font-weight-bold">Ver Participantes</a></td> 
+                            </c:otherwise>
+                        </c:choose>
                     </tr>  
                 </c:forEach>
             </tbody>

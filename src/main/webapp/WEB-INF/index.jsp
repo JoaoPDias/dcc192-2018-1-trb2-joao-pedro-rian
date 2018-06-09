@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 01/06/2018, 11:08:21
-    Author     : Rian Alves
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +7,7 @@
         <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
         <script type="text/javascript">
             var eventos = <%=request.getAttribute("eventos")%>;
+            var usuario = <%=request.getAttribute("usuario")%>;
         </script>
         <script src="js/Cards.js"></script>
         <title>Amigo Oculto - DCC192</title>

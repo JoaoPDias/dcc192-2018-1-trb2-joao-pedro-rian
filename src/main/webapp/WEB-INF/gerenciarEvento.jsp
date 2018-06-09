@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
+        <script src="js/MoveCombobox.js" ></script>
+
         <title>Gerenciamento do Evento</title>
     </head>
     <body>
@@ -19,36 +21,40 @@
     <div class="row">
 
         <div class="col">  
-            <select class="custom-select" onclick="myFunction">
-                <option>Selecione um participante para o Evento</option>
+            <label for="origem" class="text-center font-weight-bold">Selecione um participante para o Evento</label>
+            <select class="custom-select" size="15" id="origem">
                 <c:forEach var="amigo" items="${participantes}">
-                    <option>${amigo.nome} ( ${amigo.email} ) </option>
+                    <option value="${amigo.codigo}">${amigo.nome} ( ${amigo.email} ) </option>
 
                 </c:forEach>
             </select>
 
         </div>
-        <div class="col"> <img src="icones/setas.jpg" class="rounded mx-auto d-block" width="500" height="400" alt="Imagem"> </div>
+        <div class="col btn-group-vertical">
+
+            <button type="button" id="add" class="btn btn-primary" onclick="MoveListBoxItem('origem', 'destino', false)">Adicionar</button>
+            <button type="button" id="addAll" class="btn btn-primary" onclick="MoveListBoxItem('origem', 'destino', true)">Adicionar Todos</button>
+            <button type="button" id="remove" class="btn btn-danger" onclick="MoveListBoxItem('destino', 'origem', false)">Remover</button>
+            <button type="button" id="removeAll" class="btn btn-danger" onclick="MoveListBoxItem('destino', 'origem', true)">Remover Todos</button>
+        </div>
         <div class="col">  
-            <select class="custom-select" size="15">
-                <option>Participantes Selecionados: </option>
-                <c:forEach var="amigo" items="${participantes}">
-                    <option>${amigo.nome} ( ${amigo.email} ) </option>
+            <form method="post">
+                <label for="origem" class="text-center font-weight-bold">Participantes Selecionados: </label>
+                <select multiple="multiple" class="custom-select" name="selecionados" size="15" id="destino">
+                </select> 
+                <input type="hidden" value="${codEvento}" name="evento">
+                <input type="hidden" value="${usuario}" name="usuario">
+                <br/>
+                <br/>
+                <input type="submit" value="Salvar Selecionados" class="btn btn-success btn-lg" name="acessar" onclick="selectAll('destino')" >
 
-                </c:forEach>
-            </select> 
-            <br/>        
-
-            <center><button class="btn btn-danger btn-sm">Remover do Evento</button></center>
-
-
+            </form>
         </div>
 
     </div>
 
     <br/>
     <br/>
-
 
 
 </body>
