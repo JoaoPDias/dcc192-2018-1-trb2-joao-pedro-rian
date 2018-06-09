@@ -1,6 +1,7 @@
 package Comandos;
 
 import DAOs.EventoDAO;
+import DAOs.ParticipanteDAO;
 import Modelo.Evento;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,9 +22,11 @@ public class EventoCommand implements Comando {
             Integer id = Integer.parseInt(request.getParameter("usuario"));
             EventoDAO dao = EventoDAO.getInstance();
             List<Evento> eventos = dao.listByIDCriador(id);
+            ParticipanteDAO daoParticipante = ParticipanteDAO.getInstance();           
             RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/eventos.jsp");
             request.setAttribute("eventos", eventos);
             request.setAttribute("usuario", id);
+            request.setAttribute("total", daoParticipante.totalParticipantes());
             dispacher.forward(request, response);
             
        } catch (ServletException | IOException | SQLException ex) {

@@ -15,9 +15,7 @@ public class RegistroCommand implements Comando{
         try {
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/registro.jsp");
             despachante.forward(request, response);
-        } catch (ServletException ex) {
-            Logger.getLogger(RegistroCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(RegistroCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

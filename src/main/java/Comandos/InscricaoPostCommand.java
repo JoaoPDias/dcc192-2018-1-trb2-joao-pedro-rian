@@ -1,5 +1,6 @@
 package Comandos;
 
+import DAOs.EventoDAO;
 import DAOs.ParticipanteDAO;
 import Modelo.Participante;
 import java.io.IOException;
@@ -13,9 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 
 public class InscricaoPostCommand implements Comando {
 
-     @Override
+    @Override
     public void exec(HttpServletRequest request, HttpServletResponse response) {
-
+        String[] values = request.getParameterValues("selecionados");
+        Integer codEvento = Integer.parseInt(request.getParameter("evento"));
+        Integer codUsuario = Integer.parseInt(request.getParameter("usuario"));
+        EventoDAO dao = EventoDAO.getInstance();
+        try {
+            for (String value : values) {
+                dao.adicionarParticipacao(codEvento, Integer.parseInt(value));
+            }
+            response.sendRedirect("inscritos.html?evento=" + codEvento + "&usuario=" + codUsuario);
+        } catch (SQLException | IOException ex) {
+            Logger.getLogger(InscricaoPostCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
 }
