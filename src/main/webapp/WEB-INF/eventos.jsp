@@ -30,6 +30,10 @@
                     <td>${evento.dataEvento}</td> 
                     <td>${evento.valorMinimo}</td>
                     <c:choose>
+                        <c:when test="${evento.totalParticipantes == total && not evento.sorteado}">
+                            <td><a href="inscritos.html?codEvento=${evento.codigo}&usuario=${usuario}" class="font-weight-bold">Ver Participantes</a></td> 
+                            <td><a href="sorteio.html?codEvento=${evento.codigo}&usuario=${usuario}">Realizar Sorteio</a></td>
+                        </c:when>
                         <c:when test="${evento.totalParticipantes<total && not evento.sorteado}">
                             <td><a href="inscricao.html?codEvento=${evento.codigo}&usuario=${usuario}" class="text-success font-weight-bold">Adicionar Participantes</a></td> 
                             <td><a href="inscritos.html?codEvento=${evento.codigo}&usuario=${usuario}" class="font-weight-bold">Ver Participantes</a></td> 
