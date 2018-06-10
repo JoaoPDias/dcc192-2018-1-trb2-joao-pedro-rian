@@ -4,9 +4,13 @@
     Author     : Rian Alves
 --%>
 
-<%@include file="/WEB-INF/jspf/cabecalho.jspf" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+        <%@include file="/WEB-INF/jspf/bootstrap.jspf" %>
         <title>Login - Amigo Oculto</title>
     </head>
     <body>
@@ -17,7 +21,7 @@
                 <div class="box-parent-login">
                     <div class="well bg-white box-login">
 
-                        
+
                         <img src="icones/Logotipo.png" class="rounded mx-auto d-block" width="500" height="166" alt="Imagem">
                         <br/>
                         <form method="post">
@@ -25,7 +29,7 @@
 
                                 <div class="form-group ls-login-user">
                                     <label for="userLogin">E-mail</label>
-                                    <input class="form-control ls-login-bg-user input-lg" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário" name="usuario">
+                                    <input class="form-control ls-login-bg-user input-lg" id="userLogin" type="text" aria-label="UsuÃ¡rio" placeholder="UsuÃ¡rio" name="usuario">
                                 </div>
 
                                 <div class="form-group ls-login-password">
@@ -37,7 +41,7 @@
 
                                 <input type="submit" value="Entrar" class="btn btn-primary btn-lg btn-block" name="acessar" >
 
-                                <center>Não possui cadastro? </center>
+                                <center>NÃ£o possui cadastro? </center>
                                 <center> <a href="registro.html">Cadastre-se agora</a></center>
 
                             </fieldset>
@@ -54,4 +58,4 @@
             <div class="col"></div>
         </div>
 
-<%@include file="/WEB-INF/jspf/rodape.jspf" %>
+        <%@include file="/WEB-INF/jspf/rodape.jspf" %>
