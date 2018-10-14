@@ -22,8 +22,10 @@ public class RegistroPostCommand implements Comando {
         Participante participante = new Participante(nome, email, senha);     
         try {
             dao.adicionar(participante);
-            response.sendRedirect("index.html");
-        } catch (SQLException | IOException ex) {
+            request.setAttribute("cadastroSucesso", true);
+            LoginCommand loginCommand = new LoginCommand();
+            loginCommand.exec(request, response);
+        } catch (SQLException ex) {
             Logger.getLogger(NovoEventoPostCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

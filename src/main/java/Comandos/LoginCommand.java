@@ -13,7 +13,11 @@ public class LoginCommand implements Comando {
     @Override
     public void exec(HttpServletRequest request, HttpServletResponse response) {
         try {
-
+            if(request.getAttribute("cadastroSucesso")!=null && request.getAttribute("cadastroSucesso").equals(true)){
+                request.setAttribute("cadastroSucesso", true);
+            }else{
+                request.setAttribute("cadastroSucesso", false);
+            }
             request.setAttribute("erroLogin", false);
             RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/login.jsp");
             despachante.forward(request, response);
